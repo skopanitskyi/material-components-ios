@@ -18,6 +18,7 @@ let package = Package(
                 path: "components/AvailabilityT"),
         .target(name: "MaterialTextFields",
                 dependencies:[
+                    .target(name: "TextControls"),
                     .target(name:"AvailabilityT"),
                     .target(name:"AnimationTiming"),
                     .target(name:"Buttons"),
@@ -104,6 +105,29 @@ let package = Package(
         .target(name: "TypographySchemeScheming",
                 path: "components/schemes/Typography/src/Scheming/"
                 ),
+        .target(name: "TextControls",
+                dependencies: [
+                  "MDFInternationalization",
+                  "MDFTextAccessibility",
+                  .target(name:"Elevation"),
+                  .target(name:"Ink"),
+                  .target(name:"Ripple"),
+                  .target(name:"ShadowElevations"),
+                  .target(name:"ShadowLayer"),
+                  .target(name:"Shapes"),
+                  .target(name:"Typography"),
+                  .target(name:"ShapeScheme"),
+                  .target(name:"ContainerScheme"),
+                  .target(name:"TypographyScheme"),
+                  .target(name:"ColorScheme"),
+                  .target(name:"Math"),
+                  .target(name: "TextControlsPrivate")
+                ],
+               path: "components/TextControls/",
+               sources: [
+                    "src"
+               ],
+               publicHeadersPath: "src"),
         .target(name: "TypographySchemeBasicFontScheme",
                 path: "components/schemes/Typography/src/BasicFontScheme/"),
         .target(name: "Buttons",
@@ -163,6 +187,19 @@ let package = Package(
                     "src"
             ],
                 publicHeadersPath:"src"),
+      .target(name: "TextControlsPrivate",
+              dependencies: [
+                .target(name:"ShadowLayer"),
+                .target(name:"AnimationTiming"),
+                .target(name: "AvailabilityT"),
+                .target(name: "Color"),
+                .target(name: "Math")
+              ],
+              path: "components/private/TextControlsPrivate/",
+              sources: [
+                  "src"
+              ],
+              publicHeadersPath: "src"),
         .target(name: "Palettes", 
                 path: "components/Palettes/",
                 sources: [
@@ -232,6 +269,6 @@ let package = Package(
                 sources: [
                     "src"
             ],
-                publicHeadersPath:"src")
+                publicHeadersPath:"src"),
     ]
 )
